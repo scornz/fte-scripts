@@ -5,9 +5,12 @@ name = "pypi"
 
 [packages]
 pyairtable = "*"
+python-dotenv = "*"
 
 [dev-packages]
 pre-commit = "*"
+mypy = "*"
+black = "*"
 
 [requires]
 python_version = "3.11"
