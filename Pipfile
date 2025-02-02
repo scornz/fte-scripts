@@ -9,11 +9,13 @@ python-dotenv = "*"
 google-api-python-client = "*"
 google-auth-httplib2 = "*"
 google-auth-oauthlib = "*"
+requests = "*"
 
 [dev-packages]
 pre-commit = "*"
 mypy = "*"
 black = "*"
+google-api-python-client-stubs = "*"
 
 [requires]
 python_version = "3.11"
