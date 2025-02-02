@@ -163,3 +163,6 @@ cython_debug/
 
 # OS X
 .DS_Store
+
+# Google Workspace / Google Cooud
+google-cloud-credentials.json
