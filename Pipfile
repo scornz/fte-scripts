@@ -3,6 +3,9 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
+[scripts]
+listserv = "bash -c 'cd src && python -m scripts.listserv'"
+
 [packages]
 pyairtable = "*"
 python-dotenv = "*"

@@ -1,0 +1,34 @@
+name: "Update all listservs"
+
+on:
+  schedule:
+    # Runs at minute 0 of every hour
+    - cron: "0 * * * *"
+  # Allows manual trigger from the GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  run-listserv:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.11"
+
+      - name: Install pipenv
+        run: pip install --upgrade pipenv
+
+      - name: Install dependencies
+        run: pipenv install
+
+      - name: Run listserv script
+        run: pipenv run listserv
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+          GOOGLE_SERVICE_ACCOUNT_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_CREDENTIALS }}
