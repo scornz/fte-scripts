@@ -8,6 +8,9 @@ from typing import (
     overload,
 )
 
+import base64
+import json
+
 from dotenv import load_dotenv
 
 T = TypeVar("T", str, int, datetime)
@@ -81,3 +84,7 @@ load_dotenv()
 
 AIRTABLE_API_KEY = _get_env("AIRTABLE_API_KEY", str)
 AIRTABLE_BASE_ID = _get_env("AIRTABLE_BASE_ID", str)
+
+GOOGLE_SERVICE_ACCOUNT_CREDENTIALS: dict[str, str] = json.loads(
+    base64.b64decode(_get_env("GOOGLE_SERVICE_ACCOUNT_CREDENTIALS", str)).decode()
+)
