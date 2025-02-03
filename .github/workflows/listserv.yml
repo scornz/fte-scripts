@@ -2,8 +2,8 @@ name: "Update all listservs"
 
 on:
   schedule:
-    # Runs at minute 0 of every hour
-    - cron: "*/5 * * * *"
+    # Runs every 30 minutes
+    - cron: "*/30 * * * *"
   # Allows manual trigger from the GitHub Actions UI
   workflow_dispatch:
 
