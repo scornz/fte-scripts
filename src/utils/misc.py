@@ -18,4 +18,4 @@ def process_email(email: str):
     local_part_without_periods = local_part.replace(".", "")
 
     # Reconstruct and return the modified email
-    return f"{local_part_without_periods}@{domain_part}".lower()
+    return f"{local_part_without_periods}@{domain_part}".lower().strip()
