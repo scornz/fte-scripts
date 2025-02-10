@@ -92,7 +92,9 @@ def google_add_user_to_group(email: str, group_email: str):
     """
 
     logger.info(f"Adding {email} to {group_email}.")
-    dirv1.members().insert(groupKey=group_email, body={"email": email}).execute()
+    dirv1.members().insert(
+        groupKey=group_email, body={"email": process_email(email)}
+    ).execute()
     sleep(1)
 
 
@@ -105,7 +107,9 @@ def google_remove_user_from_group(email: str, group_email: str):
     """
 
     logger.info(f"Removing {email} from {group_email}.")
-    dirv1.members().delete(groupKey=group_email, memberKey=email).execute()
+    dirv1.members().delete(
+        groupKey=group_email, memberKey=process_email(email)
+    ).execute()
     sleep(1)
 
 
