@@ -14,12 +14,12 @@ def process_email(email: str):
     # Split into local part (before '@') and domain part (after '@')
     local_part, domain_part = email.split("@", 1)
 
-    # Remove all '.' characters from the local part
-    local_part_without_periods = local_part.replace(".", "")
-
     # If domain part is googlemail.com in any case, change it to gmail.com
-    if domain_part.lower() == "googlemail.com":
+    if domain_part.lower() == "googlemail.com" or domain_part.lower() == "gmail.com":
+        # Change domain part to gmail.com
         domain_part = "gmail.com"
+        # Remove all '.' characters from the local part
+        local_part = local_part.replace(".", "")
 
     # Reconstruct and return the modified email
-    return f"{local_part_without_periods}@{domain_part}".lower().strip()
+    return f"{local_part}@{domain_part}".lower().strip()
