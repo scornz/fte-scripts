@@ -120,7 +120,9 @@ def google_update_group_managers(group_email: str, managers: List[str]):
     """
 
     managers = [process_email(m) for m in managers]
-    all_members = dirv1.members().list(groupKey=group_email).execute()["members"]
+    all_members = (
+        dirv1.members().list(groupKey=group_email).execute().get("members", [])
+    )
 
     # List of IDs to demote to members
     remove_manager_member_ids = [
