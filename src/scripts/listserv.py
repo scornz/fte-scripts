@@ -37,7 +37,7 @@ def main():
     # STEP 2: Add/remove users from the groups in Google Workspace
     logger.info("2: Adding/removing users from the groups in Google Workspace.")
     for group in groups:
-        members = set([process_email(m.email) for m in group.athletes])
+        members = set([process_email(m.email) for m in group.athletes if m.email])
         google_group_members = google_get_all_group_members(group.email)
         logger.info(f"Fetched {len(google_group_members)} members of {group.email}.")
 
