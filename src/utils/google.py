@@ -76,11 +76,28 @@ def google_get_all_group_members(group_email: str) -> List[str]:
         out (`List[str]`): A list of email addresses of the members.
     """
 
-    res = dirv1.members().list(groupKey=group_email).execute()
+    all_members = []
+    page_token = None
 
-    return (
-        [process_email(m["email"]) for m in res["members"]] if "members" in res else []
-    )
+    while True:
+        if page_token:
+            res = (
+                dirv1.members()
+                .list(groupKey=group_email, pageToken=page_token, maxResults=200)
+                .execute()
+            )
+        else:
+            res = dirv1.members().list(groupKey=group_email, maxResults=200).execute()
+
+        if "members" in res:
+            all_members.extend([process_email(m["email"]) for m in res["members"]])
+
+        # Check if there are more pages
+        page_token = res.get("nextPageToken")
+        if not page_token:
+            break
+
+    return all_members
 
 
 def google_add_user_to_group(email: str, group_email: str):
