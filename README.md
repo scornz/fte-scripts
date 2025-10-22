@@ -1,8 +1,5 @@
 <h1 align="left">fte-scripts</h1>
 
-<p align="center">
-  <img src="https://fullthrottle.nyc/wp-content/uploads/2022/02/FT_logo_white-1.png" width="65%" />
-</p>
 <p>
   <a href="https://github.com/scornz/fte-scripts/blob/main/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
